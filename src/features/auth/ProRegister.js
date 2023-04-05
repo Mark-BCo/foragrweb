@@ -84,15 +84,15 @@ const ProRegister = () => {
 
     useEffect(() => {
         const result = EMAIL_REGEX.test(email)
-        console.log(result)
-        console.log(email)
+        // console.log(result)
+        // console.log(email)
         setValidEmail(result)
     }, [email])
 
     useEffect(() => {
         const result = PWD_REGEX.test(password)
-        console.log(result)
-        console.log(password)
+        // console.log(result)
+        // console.log(password)
         setValidPwd(result)
         const match = password === matchPwd
         setValidMatch(match)

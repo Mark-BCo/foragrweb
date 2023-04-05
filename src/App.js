@@ -39,8 +39,6 @@ function App() {
         {/* Public Routes */}
         <Route index element={<Home />} />
         <Route path='Partners' element={<Partners />} />
-
-
         <Route path="Register" element={<Register />} />
         <Route path="ProRegister" element={<ProRegister />} />
         <Route path="Login" element={<Login />} />
@@ -61,11 +59,8 @@ function App() {
         <Route element={<PersistLogin />} >
           <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
             <Route element={<Prefetch />} >
-
               <Route path="dash" element={<Admin />} />
-
               <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin, ROLES.User, ROLES.Professional]} />}>
-                
                 <Route path="dash/users">
                   <Route index element={<UsersList />} />
                   <Route path=":id" element={<EditUser />} />
