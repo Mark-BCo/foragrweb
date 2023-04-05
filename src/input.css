@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Jost', sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  /* min-height: 100vh; */
+  background-color: #d2e9dd;
+  color: #262d29;
+}
+
+h1 {
+  display: block;
+  font-size: 2em;
+  text-align: center;
+  height: 9vh;
+  width: fit-content;
+  height: fit-content;
+}
+
+a {
+  text-decoration: none;
+}
+
+[type='button'],
+[type='reset'],
+[type='button']:focus,
+[type='button']:hover,
+[type='submit']:focus,
+[type='submit']:hover,
+button:focus,
+button:hover {
+  color: black;
+  text-decoration: none;
+  transition: all 0.4s;
+  background: rgb(255, 255, 255);
+}
+
+.instructions {
+  border: 1px solid #262d29;
+  border-radius: 0.375rem;
+  padding: 1px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  transition: all 0.6s;
+  transition-timing-function: ease-in-out;
+  color: darkgreen;
+  background-color: white;
+  font-weight: 900;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: pink;
+  color: black;
+  font-weight: bold;
+  font-size: medium;
+  border: 1px solid #262d29;
+  border-radius: 0.375rem;
+  margin-top: 6px;
+  inline-size: 280px;
+  line-height: 20px;
+  padding: 2px;
+}
+
+.line {
+  display: inline-block;
+}
+
+.table__th,
+.table__cell {
+  background-color: var(--TABLE-BGCOLOR);
+  text-align: left;
+  border: 1px solid var(--TABLE-COLOR);
+  padding: 0.5em;
+}
+
+.table__cell:last-child {
+  display: grid;
+  place-content: center;
+}
+
+.table__cell--inactive {
+  background-color: var(--INACTIVE);
+}
+
+.leaflet-container {
+  width: 80vw;
+  height: 80vh;
+  z-index: 30;
+  margin: 8%;
+  width: 70%;
+
+}
