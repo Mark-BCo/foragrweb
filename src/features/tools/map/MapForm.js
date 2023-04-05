@@ -40,7 +40,7 @@ const MapForm = () => {
         formData.append('image', selectedImage)
 
         axios
-            .post("http://localhost:3500/locations", formData, {
+            .post("https://foragr-api.onrender.com/locations", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
