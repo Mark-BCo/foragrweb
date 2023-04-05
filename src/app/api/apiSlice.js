@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import {setCredentials} from '../api/authSlice'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: "http://localhost:3500", // base directory needs to change at deployment
+    baseUrl: "https://foragr-api.onrender.com", // base directory needs to change at deployment
     credentials: 'include', // always include the cookie for the refresh token
     prepareHeaders: (headers, {getState}) => {
         const token = getState().auth.token
