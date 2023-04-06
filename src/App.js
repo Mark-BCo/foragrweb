@@ -45,18 +45,21 @@ function App() {
         <Route path="Preference" element={<Preference />} />
 
 
-        <Route element={<PersistLogin />} >
-          <Route path="Learn" element={<Learn />} />
-          <Route path="PlantCard" element={<PlantCard />} />
-          <Route path="PlantResult" element={<PlantFinal />} />
-          <Route path="Map" element={<Map />} />
-          <Route path="MapForm" element={<MapForm />} />
-        </Route>
+        {/* <Route element={<PersistLogin />} >
+
+        </Route> */}
 
 
         {/* Create a Persistant Login Component [x] */}
         {/* protected Routes */}
         <Route element={<PersistLogin />} >
+
+          <Route path="Learn" element={<Learn />} />
+          <Route path="PlantCard" element={<PlantCard />} />
+          <Route path="PlantResult" element={<PlantFinal />} />
+          <Route path="Map" element={<Map />} />
+          <Route path="MapForm" element={<MapForm />} />
+
           <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
             <Route element={<Prefetch />} >
               <Route path="dash" element={<Admin />} />
@@ -66,13 +69,13 @@ function App() {
                   <Route path=":id" element={<EditUser />} />
                   <Route path="new" element={<NewUserForm />} />
                 </Route>
-                
+
                 <Route path="dash/pros">
                   <Route index element={<ProsList />} />
                   <Route path=":id" element={<EditPros />} />
                   <Route path="new" element={<NewProsForm />} />
                 </Route>
-              
+
               </Route>
 
               <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Professional]} />}>
