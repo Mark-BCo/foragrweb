@@ -18,7 +18,7 @@ const Preference = ({id}) => {
 
         try {
 
-            const response = await axios.patch(`http://localhost:3500/profile/${id}`,
+            const response = await axios.patch(`https://foragr-api.onrender.com/profile/${id}`,
                 JSON.stringify({ bio, craft, forage, eat, lore }),
                 {
                     headers: { 'Content-Type': 'application/json' },
