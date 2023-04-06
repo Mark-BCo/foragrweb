@@ -2,8 +2,9 @@ import React from 'react'
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from "react-leaflet";
 import L from 'leaflet'
 import axios from 'axios'
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Instruction from './MapInstructions';
 
 const Map = () => {
 
@@ -39,7 +40,7 @@ const Map = () => {
                 setMarkerData(data)
             }
         })
-        
+
         // Commented out until I can sort how to click on each pop up
         // On the backend - Do not add duplicate locations? or if they are dupliacte do not show them on the map
         // could be complex in that they only show the locations within grids on the map - i.e. not every pin pointed location?
@@ -72,6 +73,7 @@ const Map = () => {
                 <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 <CustomMarker />
             </MapContainer>
+            <Instruction />
         </>
     )
 }

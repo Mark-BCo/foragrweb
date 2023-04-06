@@ -3,7 +3,6 @@ import User from './User';
 import Admin from "../auth/Admin";
 import React from "react"
 
-
 const UsersList = () => {
 
     const {
