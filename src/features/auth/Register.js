@@ -197,7 +197,7 @@ const Register = () => {
                                         className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                                         You'll want a strong password!<br />
                                         Minimum 8 characters<br />
-                                        Can include:
+                                        Include:
                                         <span aria-label="exclamation mark">!</span>
                                         <span aria-label="at symbol">@</span>
                                         <span aria-label="dollar sign">$</span>
