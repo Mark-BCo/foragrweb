@@ -8,14 +8,14 @@ const Prefetch = () => {
 
     useEffect(() => {
         // console.log('subscribing')
-        // const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate())
+        const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate())
 
         store.dispatch(usersApiSlice.util.prefetch('getUsers', 'usersList', {force: true}))
 
-        // return () => {
-        //     // console.log('unsubscribing')
-        //     users.unsubscribe()
-        // }
+        return () => {
+            // console.log('unsubscribing')
+            users.unsubscribe()
+        }
         
     }, []) // Only run when the components mounts
 
