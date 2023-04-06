@@ -47,8 +47,8 @@ const Home = () => {
                         <div className="inline-flex py-2 text-8xl place-content-center">
                             Foragr <Icon icon="file-icons:leaflet" className="text-5xl" color="darkgreen" width="38" height="80" rotate={1} />
                         </div>
-                        <div className="flexm-2 py-2 text-6xl place-content-center border rounded hover:bg-cugreen hover:text-white ease-in-out duration-300">
-                            <a href='https://www.woodlandtrust.org.uk/visiting-woods/things-to-do/foraging/foraging-guidelines/?gclid=Cj0KCQjw27mhBhC9ARIsAIFsETHJxiHSMeKMJ8ezOrb6YjFXpjnCPA8YUAKcwO_WCTM51WnOPfS_y5QaAgs6EALw_wcB&gclsrc=aw.ds'>Foraging Guidelines</a>
+                        <div className="flex m-2 py-2 text-6xl place-content-center border rounded hover:bg-cugreen hover:text-white ease-in-out duration-300">
+                            <a className='text-center' href='https://www.woodlandtrust.org.uk/visiting-woods/things-to-do/foraging/foraging-guidelines/?gclid=Cj0KCQjw27mhBhC9ARIsAIFsETHJxiHSMeKMJ8ezOrb6YjFXpjnCPA8YUAKcwO_WCTM51WnOPfS_y5QaAgs6EALw_wcB&gclsrc=aw.ds'>Foraging Guidelines</a>
                         </div>
                     </div>
                     <div className="flex flex-col p-1 ml-12 mr-12 md:mr-28 md:ml-28">
