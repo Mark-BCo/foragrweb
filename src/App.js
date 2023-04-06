@@ -10,6 +10,10 @@ import Preference from './features/auth/Preference'
 import Learn from './features/tools/plants/Learn'
 import Map from './features/tools/map/Map'
 import MapForm from './features/tools/map/MapForm'
+import Forage from './features/tools/plants/Forage'
+import Craft from './features/tools/plants/Craft'
+import Eat from './features/tools/plants/Eat'
+import Lore from './features/tools/plants/Lore'
 import Admin from './features/auth/Admin'
 import UsersList from './features/users/usersList'
 import ProsList from './features/users/ProsList'
@@ -58,6 +62,11 @@ function App() {
           <Route path="PlantCard" element={<PlantCard />} />
           <Route path="PlantResult" element={<PlantFinal />} />
           <Route path="Map" element={<Map />} />
+          <Route path="MapForm" element={<MapForm />} />
+          <Route path="forage" element={<Forage />} />
+          <Route path="craft" element={<Craft />} />
+          <Route path="eat" element={<Eat />} />
+          <Route path="lore" element={<Lore />} />
           <Route path="MapForm" element={<MapForm />} />
 
           <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>

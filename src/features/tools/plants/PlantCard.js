@@ -31,24 +31,24 @@ const PlantCard = ({ plants }) => {
             <div className="m-2">
                 <div className="flex justify-center m-2">
                     <div className="mr-4">
-                        <Link>
+                        <Link to='/forage'>
                             <Icon icon="file-icons:leaflet" className="h-8 w-8 object-contain" color="darkgreen" rotate={1} />
                         </Link>
                     </div>
 
                     <div className="mr-4">
-                        <Link>
+                        <Link to='/craft'>
                             <Icon icon="game-icons:stone-crafting" className="h-8 w-8 object-contain" color="darkgreen" />
                         </Link>
                     </div>
 
                     <div className="mr-4">
-                        <Link>
+                        <Link to='/eat'>
                             <Icon icon="ep:food" className="h-8 w-8 object-contain" color="darkgreen" />
                         </Link>
                     </div>
-                    <div className="">
-                        <Link>
+                    <div className="/lore">
+                        <Link to='/lore'>
                             <Icon icon="ic:sharp-history-edu" className="h-8 w-8 object-contain" color="darkgreen" />
                         </Link>
                     </div>
