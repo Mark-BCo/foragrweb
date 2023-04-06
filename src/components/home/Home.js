@@ -43,11 +43,11 @@ const Home = () => {
         content = (
             <>
                 <div className="grid place-content-center min-h-screen bg-center">
-                    <div className="flex justify-center items-center sm:px-16 px-6 sm:py-12 py-4 sm:mx-16 mx-6">
+                    <div className="flex flex-col justify-center items-center sm:px-16 px-6 sm:py-12 py-4 sm:mx-16 mx-6">
                         <div className="inline-flex py-2 text-8xl place-content-center">
                             Foragr <Icon icon="file-icons:leaflet" className="text-5xl" color="darkgreen" width="38" height="80" rotate={1} />
                         </div>
-                        <div className="flex py-2 text-6xl place-content-center">
+                        <div className="flexm-2 py-2 text-6xl place-content-center border rounded hover:bg-cugreen hover:text-white ease-in-out duration-300">
                             <a href='https://www.woodlandtrust.org.uk/visiting-woods/things-to-do/foraging/foraging-guidelines/?gclid=Cj0KCQjw27mhBhC9ARIsAIFsETHJxiHSMeKMJ8ezOrb6YjFXpjnCPA8YUAKcwO_WCTM51WnOPfS_y5QaAgs6EALw_wcB&gclsrc=aw.ds'>Foraging Guidelines</a>
                         </div>
                     </div>
