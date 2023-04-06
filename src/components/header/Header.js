@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useSendLogoutMutation } from '../../app/api/authApiSlice'
@@ -9,6 +9,9 @@ import React from "react"
 const ForHeader = ({userId}) => {
 
     const navigate = useNavigate()
+
+    const [showSidebar, setShowSidebar] = useState(false);
+
 
     const { username, isManager, isAdmin, isProfessional } = useAuth()
 

@@ -324,6 +324,7 @@ const ProRegister = () => {
                                             className="text-left shadow border rounded"
                                             type="password"
                                             id="password"
+                                            autoComplete='new-password'
                                             onChange={(e) => setPwd(e.target.value)}
                                             required
                                             aria-invalid={validPwd ? "false" : "true"}
@@ -346,6 +347,7 @@ const ProRegister = () => {
                                             className="text-left shadow border rounded"
                                             type="password"
                                             id="confirm_pwd"
+                                            autoComplete='new-password'
                                             onChange={(e) => setMatchPwd(e.target.value)}
                                             required
                                             aria-invalid={validMatch ? "false" : "true"}
