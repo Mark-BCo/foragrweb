@@ -38,7 +38,7 @@ const EditUserProfile = () => {
         formData.append('image', selectedImage)
 
         axios
-            .patch("http://localhost:3500/profile", formData, {
+            .patch("https://foragr-api.onrender.com/profile", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
