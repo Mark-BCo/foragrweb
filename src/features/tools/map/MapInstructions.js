@@ -2,7 +2,7 @@ import React from 'react'
 
 const Instruction = () => {
     return (
-        <div className='flex flex-wrap border rounded bg-cugreen text-white p-4 w-4/12 text-2xl justify-center m-4 text-center antialiased'>
+        <div className='flex flex-wrap border rounded bg-cugreen text-white p-4 text-2xl justify-center m-4 text-center font-bold'>
             <div className='flex flex-col'>
                 <h3>
                     Forgar Map
