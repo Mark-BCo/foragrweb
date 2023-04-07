@@ -16,6 +16,7 @@ import Eat from './features/tools/plants/Eat'
 import Lore from './features/tools/plants/Lore'
 import Admin from './features/auth/Admin'
 import UsersList from './features/users/usersList'
+import EditUserProfile from './features/users/edit/EditUserProfile'
 import ProsList from './features/users/ProsList'
 // import UserProfile from './features/users/profile/Users'
 import UsersProfileList from './features/users/profile/UsersList'
@@ -68,7 +69,7 @@ function App() {
           <Route path="eat" element={<Eat />} />
           <Route path="lore" element={<Lore />} />
           <Route path="MapForm" element={<MapForm />} />
-
+          <Route path="profile" element={<EditUserProfile />} />
           <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
             <Route element={<Prefetch />} >
               <Route path="dash" element={<Admin />} />
