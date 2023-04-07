@@ -56,7 +56,7 @@ const EditUserProfile = () => {
 
     return (
         <div className="grid place-content-center min-h-screen">
-            <form className="flex flex-col border rounded p-4" onSubmit={handleUserForm}>
+            <form className="flex flex-col border rounded p-4 font-bold antialiased" onSubmit={handleUserForm}>
 
                 <input type='hidden' name="hiddenField" value={userName} onChange={handleUserNameInput}></input>
 
