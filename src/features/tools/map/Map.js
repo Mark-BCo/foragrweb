@@ -69,11 +69,11 @@ const Map = () => {
     }
     return (
         <>
+            <Instruction />
             <MapContainer className='h-screen border-double border-2 border-cugreen  rounded-lg shadow-2xl' center={[54.63526961765724, -6.697285447066898]} zoom={9}>
                 <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 <CustomMarker />
             </MapContainer>
-            <Instruction />
         </>
     )
 }
