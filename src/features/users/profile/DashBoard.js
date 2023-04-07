@@ -21,9 +21,6 @@ const DashBoard = () => {
                     <p className="text-xl text-center">Community</p>
                 </Link>
             </div>
-            <div className='flex justify-center h-18 mt-3'>
-               <h1>Plants Table</h1>
-            </div>
         </>
     )
 }

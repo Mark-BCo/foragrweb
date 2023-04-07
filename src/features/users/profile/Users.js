@@ -15,7 +15,7 @@ const UserProfile = ({ userId }) => {
         }),
     })
 
-    console.log(user)
+    // console.log(user)
 
     const { isUser, isProfessional } = useAuth()
 
@@ -27,7 +27,7 @@ const UserProfile = ({ userId }) => {
 
     const navigate = useNavigate()
 
-    console.log(userId)
+    // console.log(userId)
 
     if (isUser || isProfessional) {
 

@@ -85,7 +85,7 @@ const Admin = () => {
                     <>
                         <div className="grid place-content-center">
                             <h1 className="flex w-48 md:w-32 lg:w-48 text-bold text-black">Welcome to Foragr {username}!</h1>
-                            <Link to="/dash/userprofile">View Your Profile</Link>
+                            <Link to="/dash/userprofile">Edit Your Profile</Link>
                             <DashBoard />
                         </div>
                     </>}
