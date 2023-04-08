@@ -116,13 +116,13 @@ const ForHeader = ({ userId }) => {
                                 <p className="text-xl text-center">Register</p>
                             </Link>
                         </li>}
-                        {(!username) && <li className="px-1">
+                        {/* {(!username) && <li className="px-1">
                             <Link className="" to='../ProRegister' onClick={() => setShowSidebar(!showSidebar)}>
                                 <button className="px-3 py-2 rounded text-4xl"><Icon icon="uiw:usergroup-add" color="darkgreen" />
                                 </button>
                                 <p className="text-xl text-center">Group <br />Register</p>
                             </Link>
-                        </li>}
+                        </li>} */}
                         {(!username) && <li className="px-1" >
                             <Link className="" to='../Login' onClick={() => setShowSidebar(!showSidebar)}>
                                 <button className="px-3 py-2 rounded text-4xl"><Icon icon="carbon:login" color="darkgreen" /></button>
