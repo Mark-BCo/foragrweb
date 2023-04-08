@@ -57,8 +57,9 @@ const PersistLogin = () => {
     } else if (isLoading) {
         content = <p>Loading ...</p>
     } else if (isError) { // persist: yes, token: no
+        console.log(<p>{`${error?.data?.message}`}</p>)
         content = (
-            <Link className="grid place-content-center text-center antialiased min-h-screen text-2xl font-bold hover:bg-cugreen transition ease-in duration-300 hover:text-white" to="/Login"><p>{`${error?.data?.message}`}</p>Sorry, you must be logged in to view this page.</Link>
+            <Link className="grid place-content-center text-center antialiased min-h-screen text-2xl font-bold hover:bg-cugreen transition ease-in duration-300 hover:text-white" to="/Login">Sorry, you must be logged in to view this page.</Link>
         )
     } else if (isSuccess && trueSuccess) { // persist: yes, token: yes
         content = <Outlet />
