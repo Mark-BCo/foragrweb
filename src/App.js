@@ -5,7 +5,7 @@ import Partners from './components/header/Partners'
 import PersistLogin from './features/auth/PersistLogin'
 import Login from './features/auth/Login'
 import Register from './features/auth/Register'
-import ProRegister from './features/auth/ProRegister'
+// import ProRegister from './features/auth/ProRegister'
 import Preference from './features/auth/Preference'
 import Learn from './features/tools/plants/Learn'
 import Map from './features/tools/map/Map'
@@ -45,7 +45,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path='Partners' element={<Partners />} />
         <Route path="Register" element={<Register />} />
-        <Route path="ProRegister" element={<ProRegister />} />
+        {/* <Route path="ProRegister" element={<ProRegister />} /> */}
         <Route path="Login" element={<Login />} />
         <Route path="Preference" element={<Preference />} />
 
