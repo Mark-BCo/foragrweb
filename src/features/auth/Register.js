@@ -118,7 +118,7 @@ const Register = () => {
                 (<div className="grid place-content-center min-h-screen">
                     <h1>Thanks for registering!
                         <br/>
-                        <a href="/Preference">Add your preferences</a>
+                        <a href="/Login">Head to Login</a>
                     </h1>
                 </div>
                 ) : (
