@@ -60,7 +60,6 @@ const Home = () => {
                             {quoteContent}
                         </a>
                     </div>
-                    <Safety />
                 </div>
             </>
 
