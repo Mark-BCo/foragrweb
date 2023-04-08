@@ -13,7 +13,7 @@ const Quotes = ({ quotesId }) => {
     if (quote) {
 
         return (
-            <div className="antialiased font-bold text-base p-1 border rounded shadow-lg mb-2">
+            <div className="border rounded shadow-lg text-base mb-3">
                 <div className="">"{quote.quote_desc}"</div>
                 <div className="">{quote.quote_name}</div>
             </div>
