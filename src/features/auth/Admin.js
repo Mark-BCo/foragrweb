@@ -51,13 +51,14 @@ const Admin = () => {
                             {(isManager || isAdmin) && <div className="border rounded bg-cugreen text-center"><Link to="/dash/pros">Edit Professional Users</Link></div>}
                             {(isManager || isAdmin) && <div className="border rounded bg-cugreen text-center"><Link to="/dash/users/new">Add a New User</Link></div>}
                         </div>
+
                     </>
                 }
 
                 {(isProfessional) &&
                     <>
                         <div className="grid place-content-center">
-                            <h1 className="flex text-bold text-black">Welcome to Foragr {username}!</h1>
+                            <h1 className="flex text-bold text-black mt-4 mb-4">Welcome to Foragr {username}!</h1>
                             <Link to='/profile' className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">Edit your profile</Link>
                             <Link to="/dash/userprofile" className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">View Your Profile</Link>
                             <DashBoard />
@@ -86,14 +87,28 @@ const Admin = () => {
                                 {plantContent}
                             </table>
                         </div>
+                        <div className="flex flex-col mt-20 border rounded font-bold antialiased bg-white items-center">Hi {username} and welcome to Forgar
+                            <div>Browse the site using the icons above</div>
+                        </div>
+                        <div className="flex flex-col mt-20 border rounded font-bold antialiased bg-white items-center">To provide feedback on the site email us at
+                            <br />
+                            <a className='text-cugreen' href="mailto: foragr.ni@gmail.com">foragr.ni@gmail.com</a>
+                        </div>
                     </>}
                 {(isUser) &&
                     <>
                         <div className="grid place-content-center">
-                            <h1 className="flex text-bold text-black">Welcome to Foragr {username}!</h1>
+                            <h1 className="flex text-bold text-black mt-4 mb-4">Welcome to Foragr {username}!</h1>
                             <Link to='/profile' className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">Edit your profile</Link>
                             <Link to="/dash/userprofile" className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">View Your Profile</Link>
                             <DashBoard />
+                        </div>
+                        <div className="flex flex-col mt-20 border rounded font-bold antialiased bg-white items-center">Hi {username} and welcome to Forgar
+                            <div>Browse the site using the icons above</div>
+                        </div>
+                        <div className="flex flex-col mt-20 border rounded font-bold antialiased bg-white items-center">To provide feedback or become an administrator on the site email us at
+                            <br />
+                            <a className='text-cugreen' href="mailto: foragr.ni@gmail.com">foragr.ni@gmail.com</a>
                         </div>
                     </>}
             </>
