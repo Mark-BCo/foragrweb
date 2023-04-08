@@ -90,8 +90,9 @@ const Admin = () => {
                 {(isUser) &&
                     <>
                         <div className="grid place-content-center">
-                            <h1 className="flex w-48 md:w-32 lg:w-48 text-bold text-black">Welcome to Foragr {username}!</h1>
-                            <Link to="/dash/userprofile">Edit Your Profile</Link>
+                            <h1 className="flex text-bold text-black">Welcome to Foragr {username}!</h1>
+                            <Link to='/profile' className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">Create your profile</Link>
+                            <Link to="/dash/userprofile" className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">View Your Profile</Link>
                             <DashBoard />
                         </div>
                     </>}
