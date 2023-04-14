@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react"
-import { useUpdateUserMutation, useDeleteUserMutation, useUpdateProfileMutation } from "../../../app/api/usersApiSlice"
+import { useUpdateUserMutation, useDeleteUserMutation } from "../../../app/api/usersApiSlice"
 import { useNavigate } from "react-router-dom"
 import { ROLES } from "../../../config/roles"
 import React from "react"
 import useAuth from "../../../hooks/useAuth"
-import UploadAndDisplayImage from "../../tools/map/Image"
 import { useSendLogoutMutation } from "../../../app/api/authApiSlice"
-
+import axios from 'axios'
 
 const USER_REGEX = /^[A-z]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
@@ -22,9 +21,6 @@ const EditUserForm = ({ user }) => {
         error
     }] = useUpdateUserMutation()
 
-    const [updateProfile, {
-        isSuccess: isSuccessProfile,
-    }] = useUpdateProfileMutation()
 
     const [deleteUser, {
         isSuccess: isDelSuccess,
@@ -49,6 +45,10 @@ const EditUserForm = ({ user }) => {
     const [forage, setForage] = useState(false)
     const [eat, setEat] = useState(false)
     const [lore, setLore] = useState(false)
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const idObject = {id: user.id}
+    console.log(idObject)
 
     useEffect(() => {
         setValidUsername(USER_REGEX.test(username))
@@ -59,7 +59,7 @@ const EditUserForm = ({ user }) => {
     }, [password])
 
     useEffect(() => {
-        if (isSuccess || isDelSuccess || isSuccessProfile) {
+        if (isSuccess || isDelSuccess) {
             setUsername('')
             setPassword('')
             setBio('')
@@ -68,12 +68,12 @@ const EditUserForm = ({ user }) => {
             setEat(false)
             setLore(false)
             setRoles([])
-            navigate('/dash/users')        
+            navigate('/dash/users')
         }
-    }, [isSuccess, isDelSuccess, isSuccessProfile, navigate])
+    }, [isSuccess, isDelSuccess, navigate])
 
     useEffect(() => {
-        if (isSuccess || isDelSuccess || isLogoutSuccess || isSuccessProfile) {
+        if (isSuccess || isDelSuccess || isLogoutSuccess) {
             setUsername('')
             setPassword('')
             setBio('')
@@ -82,17 +82,22 @@ const EditUserForm = ({ user }) => {
             setEat(false)
             setLore(false)
             setRoles([])
-
             if (isUser || isProfessional) {
                 sendLogout()
-                navigate('/Login')        
+                navigate('/Login')
             }
         }
-    }, [isSuccess, isDelSuccess, isUser, isLogoutSuccess, isProfessional, isSuccessProfile, navigate, sendLogout])
+    }, [isSuccess, isDelSuccess, isUser, isLogoutSuccess, isProfessional, navigate, sendLogout])
+
+    const handleImageChange = (event) => {
+        setSelectedImage(event.target.files[0]);
+    };
+
+    console.log(handleImageChange)
+    console.log(selectedImage)
 
     const onUsernameChanged = e => setUsername(e.target.value)
     const onPasswordChanged = e => setPassword(e.target.value)
-
     const onRolesChanged = e => {
         const values = Array.from(
             e.target.selectedOptions,
@@ -100,30 +105,46 @@ const EditUserForm = ({ user }) => {
         )
         setRoles(values)
     }
-
     const onActiveChanged = () => setActive(prev => !prev)
 
-    const onSaveUserClicked = async (e) => {
+    const updateUserImage = async () => {
+
+        const formData = new FormData();
+        formData.append('image', selectedImage);
+      
+        try {
+          const response = await axios.patch(`http://localhost:3500/users/${user.id}/image`, formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          });
+      
+          // If the update was successful, return the updated user object
+          return response.data;
+        } catch (error) {
+          console.error(error);
+          return null;
+        }
+      };
+
+    const onSaveUserClicked = async () => {
         if (password) {
-            await updateUser({ id: user.id, username, password, roles, active })
-            await updateProfile({bio, forage, craft, eat, lore})
+            await updateUser({ id: user.id, username, password, roles, active, bio, forage, craft, eat, lore, isProfessional })
+            // await updateProfile({ bio, forage, craft, eat, lore, selectedImage })
         } else {
-            await updateUser({ id: user.id, username, roles, active })
-            await updateProfile({bio, forage, craft, eat, lore})
+            await updateUser({ id: user.id, username, roles, active, bio, forage, craft, eat, lore, isProfessional })
+            // await updateProfile({ bio, forage, craft, eat, lore, selectedImage })
 
         }
     }
-
     const onDeleteUserClicked = async () => {
         await deleteUser({ id: user.id })
     }
-
     const options = Object.values(ROLES).map(role => {
         return (
             <option key={role} value={role}>{role}</option >
         )
     })
-
     let canSave
     if (password) {
         canSave = [roles.length, validUsername, validPassword].every(Boolean) && !isLoading
@@ -135,8 +156,9 @@ const EditUserForm = ({ user }) => {
     const validUserClass = !validUsername ? 'form__input--incomplete' : ''
     const validPwdClass = password && !validPassword ? 'form__input--incomplete' : ''
     const validRolesClass = !Boolean(roles.length) ? 'form__input--incomplete' : ''
-
     const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
+
+
 
     if (isUser || isProfessional) {
         const content = <>
@@ -144,40 +166,50 @@ const EditUserForm = ({ user }) => {
                 <p className={errClass}>{errContent}</p>
                 <form className="border rounded mt-20 md:mt:8 w-96" onSubmit={e => e.preventDefault()}>
                     <h2 className="bg-cugreen text-white text-2xl text-center">Edit User</h2>
-                    <UploadAndDisplayImage />
                     <ul className="flex flex-col p-2">
-                                <li className="p-1" >
-                                    <div className="flex justify-between">
-                                        <label htmlFor="text" >Please enter a little bit about yourself</label>
-                                        <input id="text" type="text" onChange={(e) => setBio(e.target.value)}
-                                        />
-                                    </div>
-                                </li>
-                                <li className="p-1" >
-                                    <div className="flex justify-between">
-                                        <label htmlFor="checkbox" >Do you enjoy making crafts?</label>
-                                        <input id="checkbox1" type="checkbox" onChange={(e) => setCraft(true)} />
-                                    </div>
-                                </li>
-                                <li className="p-1" >
-                                    <div className="flex justify-between">
-                                        <label htmlFor="checkbox" >Do you enjoy foraging?</label>
-                                        <input id="checkbox2" type="checkbox" onChange={(e) => setForage(true)} />
-                                    </div>
-                                </li>
-                                <li className="p-1" >
-                                    <div className="flex justify-between">
-                                        <label htmlFor="checkbox" >Would you like to find recipies from foraging wild food?</label>
-                                        <input id="checkbox3" type="checkbox" onChange={(e) => setEat(true)} />
-                                    </div>
-                                </li>
-                                <li className="p-1" >
-                                    <div className="flex justify-between">
-                                        <label htmlFor="checkbox" >Would you like to know more about folklore in your local area?</label>
-                                        <input id="checkbox4" type="checkbox" onChange={(e) => setLore(true)} />
-                                    </div>
-                                </li>
-                            </ul>
+                        <input type='hidden' name="hiddenField" value={isProfessional}></input>
+
+
+                        <li className="p-1" >
+                            <div className="flex justify-between">
+                                <label htmlFor="text" >Please enter a little bit about yourself</label>
+                                <input id="text" type="text" onChange={(e) => setBio(e.target.value)}
+                                />
+                            </div>
+                        </li>
+                        <div>Please upload your Profile Picture</div>
+
+                        <input className="border rounded"
+                            type="file"
+                            name="image"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                        />
+                        <li className="p-1" >
+                            <div className="flex justify-between">
+                                <label htmlFor="checkbox" >Do you enjoy making crafts?</label>
+                                <input id="checkbox1" type="checkbox" onChange={(e) => setCraft(true)} />
+                            </div>
+                        </li>
+                        <li className="p-1" >
+                            <div className="flex justify-between">
+                                <label htmlFor="checkbox" >Do you enjoy foraging?</label>
+                                <input id="checkbox2" type="checkbox" onChange={(e) => setForage(true)} />
+                            </div>
+                        </li>
+                        <li className="p-1" >
+                            <div className="flex justify-between">
+                                <label htmlFor="checkbox" >Would you like to find recipies from foraging wild food?</label>
+                                <input id="checkbox3" type="checkbox" onChange={(e) => setEat(true)} />
+                            </div>
+                        </li>
+                        <li className="p-1" >
+                            <div className="flex justify-between">
+                                <label htmlFor="checkbox" >Would you like to know more about folklore in your local area?</label>
+                                <input id="checkbox4" type="checkbox" onChange={(e) => setLore(true)} />
+                            </div>
+                        </li>
+                    </ul>
                     <div className="p-2 text-xl font-black antialiased">
                         <div className="flex flex-col">
                             <label className="" htmlFor="username">
@@ -212,7 +244,7 @@ const EditUserForm = ({ user }) => {
                             <button
                                 className="flex justify-center border rounded-md mt-4 p-2 hover:bg-cugreen hover:text-white"
                                 title="Save"
-                                onClick={onSaveUserClicked}
+                                onClick={() => {onSaveUserClicked(); updateUserImage()}}
                                 disabled={!canSave}
                             >Save User
                             </button>
@@ -320,3 +352,26 @@ const EditUserForm = ({ user }) => {
     }
 }
 export default EditUserForm
+
+// const handleProfileForm = (e) => {
+//     const formData = new FormData()
+//     formData.append('username', userName)
+//     formData.append('bio', bio)
+//     formData.append('craft', craft)
+//     formData.append('forage', forage)
+//     formData.append('eat', eat)
+//     formData.append('lore', lore)
+//     formData.append('image', selectedImage)
+//     axios
+//         .patch(`http://localhost:3500/profile/${idObject.id}`, formData, {
+//             headers: {
+//                 "Content-Type": "multipart/form-data",
+//             },
+//         })
+//         .then((res) => {
+//             console.log(res);
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         });
+// }
