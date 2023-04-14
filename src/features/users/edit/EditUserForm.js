@@ -113,7 +113,7 @@ const EditUserForm = ({ user }) => {
         formData.append('image', selectedImage);
       
         try {
-          const response = await axios.patch(`http://localhost:3500/users/${user.id}/image`, formData, {
+          const response = await axios.patch(`https://foragr-api.onrender.com/users/${user.id}/image`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
