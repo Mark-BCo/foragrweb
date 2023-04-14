@@ -59,7 +59,6 @@ const Admin = () => {
                     <>
                         <div className="grid place-content-center">
                             <h1 className="flex text-bold text-black mt-4 mb-4">Welcome to Foragr {username}!</h1>
-                            <Link to='/profile' className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">Edit your profile</Link>
                             <Link to="/dash/userprofile" className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">View Your Profile</Link>
                             <DashBoard />
                         </div>
@@ -99,7 +98,6 @@ const Admin = () => {
                     <>
                         <div className="grid place-content-center">
                             <h1 className="flex text-bold text-black mt-4 mb-4">Welcome to Foragr {username}!</h1>
-                            <Link to='/profile' className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">Edit your profile</Link>
                             <Link to="/dash/userprofile" className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">View Your Profile</Link>
                             <DashBoard />
                         </div>
