@@ -53,6 +53,9 @@ const UserProfile = ({ userId }) => {
                                     <div className="px-4 pb-2">
                                         <div className=" bg-azure rounded px-3 py-1 font-black drop-shadow-lg border-solid border-2">Email: {user.email}</div>
                                     </div>
+                                    <div className="px-4 pb-2">
+                                        <div className=" bg-azure rounded px-3 py-1 font-black drop-shadow-lg border-solid border-2">Email: {user.bio}</div>
+                                    </div>
                                     <div className="flex place-content-center px-4 pb-2">
                                         <button className="border rounded-md mt-4 p-2 hover:bg-cugreen hover:text-white" onClick={handleEdit}>Edit</button>
                                     </div>
