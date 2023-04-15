@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
+import { Icon } from '@iconify/react';
 
 const MapForm = () => {
+
+    const [showPlantInst, setShowPlantInst] = useState(false)
+    const [showNameInst, setShowNameInst] = useState(false)
 
     const { username } = useAuth()
 
@@ -13,6 +17,7 @@ const MapForm = () => {
     const [name, setName] = useState('')
     const [location, setLocation] = useState([54.63526961765724, -6.697285447066898])
     const [commonname, setCommonName] = useState('')
+    const [plantDetail, setPlantDetail] = useState('')
     const [selectedImage, setSelectedImage] = useState(null);
 
     const navigate = useNavigate()
@@ -23,10 +28,9 @@ const MapForm = () => {
 
     const handleNameInput = (e) => setName(e.target.value)
     const handleCommonNameInput = (e) => setCommonName(e.target.value)
+    const handlePlantDetailInput = (e) => setPlantDetail(e.target.value)
     const handleLocationInput = (e) => setLocation(e.target.value)
     const handleUserNameInput = (e) => setUserName(e.target.value)
-
-
 
     const handleUserForm = (e) => {
 
@@ -37,6 +41,7 @@ const MapForm = () => {
         formData.append('name', name)
         formData.append('location', location)
         formData.append('commonname', commonname)
+        formData.append('plantdetail', plantDetail)
         formData.append('image', selectedImage)
 
         axios
@@ -52,7 +57,7 @@ const MapForm = () => {
                 console.log(err);
             });
 
-            navigate('/Map')
+        navigate('/Map')
 
     }
 
@@ -72,9 +77,12 @@ const MapForm = () => {
                     autoComplete="off"
                     onChange={handleNameInput}
                     required
-                    placeholder="Plant Name" />
+                    placeholder="Plant Location" />
 
-                <label htmlFor="commonname">Add the name of the plant you have found?</label>
+                <label htmlFor="commonname">Add the name of the plant you have found?
+                    <Icon onClick={()=> setShowNameInst(true)} className="inline-flex" icon="ri:information-fill" color="darkgreen" />
+                    { showNameInst && <div className="border rounded flex flex-col w-72 m-1 p-1 bg-cugreen text-white font-bold" onClick={()=> setShowNameInst(false)}>If you are unsure of the name please enter a detailed description below, be sure to upload an image!</div>}
+                </label>
 
                 <input className="border rounded"
                     type="text"
@@ -85,6 +93,19 @@ const MapForm = () => {
                     required
                     placeholder="Plant Name" />
 
+                <label htmlFor="plantdetail">Please describe the location of the plant you have found?
+                    <Icon onClick={()=> setShowPlantInst(true)} className="inline-flex" icon="ri:information-fill" color="darkgreen" />
+                    { showPlantInst && <div className="border rounded flex flex-col w-72 m-1 p-1 bg-cugreen text-white font-bold" onClick={()=> setShowPlantInst(false)}>Please add any details about where you have found the plant, i.e. How many? Are they beside another plant? In the woods or on the road?</div>}
+                </label>
+
+                <input className="border rounded inline"
+                    type="text"
+                    id="plantdetail"
+                    value={plantDetail}
+                    autoComplete="off"
+                    onChange={handlePlantDetailInput}
+                    required
+                    placeholder="Plant Description" />
                 <div>Please upload your image?</div>
 
                 <input className="border rounded"
