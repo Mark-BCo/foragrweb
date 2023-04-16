@@ -85,8 +85,6 @@ const PlantFinal = () => {
                     {content}
                 </div>
             
-            {nav}
-
             {isFetching && <span className="loading">Loading...</span>}
         </>
     )
