@@ -1,6 +1,5 @@
 # MSC_FORAGR_CSC7058
 
-<<<<<<< HEAD
 # Design of an Interactive Web Application 'Foragr' to Promote Sustainable Living and Community Connections
 
 ## Description
@@ -13,11 +12,10 @@ We have a love of the local enviornment and the fresh food that can be found on 
 
 Ready to try your hand at some crafting or try out a new recipie? Or maybe you'd like to know more about the folklore in your area? Foragr is able to provide you with a wealth of knowledge and help to guide you through your new environmental journey!
 
-## Research Objective
-TBC
-
 ## Installation
-TBC
+
+npm install
 
 ## Usage
-TBC
+
+npm run build

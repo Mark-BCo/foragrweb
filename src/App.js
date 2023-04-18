@@ -79,27 +79,24 @@ function App() {
                   <Route path=":id" element={<EditUser />} />
                   <Route path="new" element={<NewUserForm />} />
                 </Route>
-
                 <Route path="dash/pros">
                   <Route index element={<ProsList />} />
                   <Route path=":id" element={<EditPros />} />
                   <Route path="new" element={<NewProsForm />} />
                 </Route>
-
               </Route>
-
               <Route element={<RequireAuth allowedRoles={[ROLES.User, ROLES.Professional]} />}>
                 <Route path="dash/userprofile">
                   <Route index element={<UsersProfileList />} />
                   <Route path=":id" element={<EditUser />} />
                 </Route>
               </Route>
-
             </Route>
           </Route>
         </Route> {/* End protected routes*/}
+
       </Route>
-    </Routes >
+    </Routes>
   );
 }
 
