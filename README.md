@@ -19,3 +19,8 @@ npm install
 ## Usage
 
 npm run build
+
+## Serve
+
+npm install serve
+serve -s build
