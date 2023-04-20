@@ -112,13 +112,14 @@ const Register = () => {
             errRef.current.focus();
         }
     }
+
     return (
         <>
             {success ?
                 (<div className="grid place-content-center min-h-screen">
                     <h1>Thanks for registering!
                         <br/>
-                        <a href="/Login">Head to Login</a>
+                        <a href="/Login">Head to the login page</a>
                     </h1>
                 </div>
                 ) : (
@@ -128,7 +129,10 @@ const Register = () => {
                                 <p className="flex justify-center text-4xl">Get started with Foragr<Icon icon="file-icons:leaflet" className="text-1xl material-symbols-outlineds" color="darkgreen" width="16" height="35" rotate={1} /></p>
                                 <div className="flex flex-col p-4 text-2xl">
                                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                                    <label htmlFor="username" className="">Username</label>
+                                    <label htmlFor="username" className="flex">Username
+                                    <div className={validName ? "valid" : "hide"}><p className='border m-1 text-md'><Icon icon="mdi:password-check" color="darkgreen" /></p></div>
+                                    <div className={validName || !username ? "hide" : "invalid"}><p className='border m-1 text-md'><Icon icon="mdi:password-remove" color="red" /></p></div>
+                                    </label>
                                     <input
                                         className="text-left shadow border rounded"
                                         type="text"
@@ -165,7 +169,10 @@ const Register = () => {
                                         onChange={(e) => setLastName(e.target.value)}
                                         required
                                     />
-                                    <label htmlFor="email" className="">Email</label>
+                                    <label htmlFor="email" className="flex">Email
+                                    <div className={validEmail ? "valid" : "hide"}><p className='border m-1 text-md'><Icon icon="mdi:password-check" color="darkgreen" /></p></div>
+                                    <div className={validEmail || !email ? "hide" : "invalid"}><p className='border m-1 text-md'><Icon icon="mdi:password-remove" color="red" /></p></div>                            
+                                    </label>
                                     <input
                                         className="text-left shadow border rounded"
                                         type="text"
@@ -181,9 +188,12 @@ const Register = () => {
                                         className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
                                         Not a valid email address.<br />
                                     </p>
-                                    <label htmlFor="password" className="">Password</label>
+                                    <label htmlFor="password" className="flex">Password
+                                    <div className={validPwd ? "valid" : "hide"}><p className='border m-1 text-md'><Icon icon="mdi:password-check" color="darkgreen" /></p></div>
+                                    <div className={validPwd || !password ? "hide" : "invalid"}><p className='border m-1 text-md'><Icon icon="mdi:password-remove" color="red" /></p></div>
+                                    </label>
                                     <input
-                                        className="text-left shadow border rounded"
+                                        className={`text-left shadow border rounded`}
                                         type="password"
                                         id="password"
                                         autoComplete='new-password'
@@ -196,14 +206,18 @@ const Register = () => {
                                     <p id="pwdnote"
                                         className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
                                         You'll want a strong password!<br />
-                                        Minimum 8 characters<br />
-                                        Include:
+                                        Must be a minimum of 8 characters!<br />
+                                        Upper and lower case!<br />
+                                        Please include:
                                         <span aria-label="exclamation mark">!</span>
                                         <span aria-label="at symbol">@</span>
                                         <span aria-label="dollar sign">$</span>
                                         <span aria-label="percent">%</span>
                                     </p>
-                                    <label htmlFor="password" className="">Confirm Password</label>
+                                    <label htmlFor="confirm_pwd" className="flex">Confirm Password
+                                    <div className={validMatch && matchPwd ? "valid" : "hide"}><p className='border m-1 text-md'><Icon icon="mdi:password-check" color="darkgreen" /></p></div>
+                                    <div className={validMatch || !matchPwd ? "hide" : "invalid"}><p className='border m-1 text-md'><Icon icon="mdi:password-remove" color="red" /></p></div>
+                                    </label>
                                     <input
                                         className="text-left shadow border rounded"
                                         type="password"
