@@ -5,8 +5,11 @@ import axios from 'axios'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Instruction from './MapInstructions';
+import useAuth from '../../../hooks/useAuth'
 
 const Map = () => {
+
+    const { isAdmin, isProfessional, isManager, isUser } = useAuth()
 
     const position = [54.714, -6.239]
     const [markerData, setMarkerData] = useState([]);
@@ -67,6 +70,8 @@ const Map = () => {
             </>
         )
     }
+    if (isAdmin || isUser || isProfessional || isManager) {
+
     return (
         <>
             <Instruction />
@@ -76,6 +81,13 @@ const Map = () => {
             </MapContainer>
         </>
     )
+
+    } else {
+
+        return (
+            <Link className="grid place-content-center text-center antialiased min-h-screen text-2xl font-bold hover:bg-cugreen transition ease-in duration-300 hover:text-white" to="/Login">Sorry, you must be logged in to view this page.</Link>
+        )
+    }
 }
 
 export default Map
