@@ -35,6 +35,18 @@ const Admin = () => {
         plantContent = <tbody><tr>{error.data.message}</tr></tbody>
     }
 
+    let userRole
+
+    if (isManager) {
+        userRole = <span>Manager</span>
+    } else if (isProfessional) {
+        userRole = <span> Professional</span>
+    } else if (isAdmin) {
+        userRole = <span> Administrator</span>
+    } else if (isUser) {
+        userRole = <span> General User</span>
+    }
+
     let content
 
     if (path === '/dash') {
@@ -59,6 +71,10 @@ const Admin = () => {
                     <>
                         <div className="grid place-content-center">
                             <h1 className="flex text-bold text-black mt-4 mb-4">Welcome to Foragr {username}!</h1>
+                            <div className="grid place-content-center">
+                                <div className="flex">You have a&nbsp;{userRole}'s account</div>
+                            </div>
+                            <br />
                             <Link to="/dash/userprofile" className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">View Your Profile</Link>
                             <DashBoard />
                         </div>
@@ -98,6 +114,10 @@ const Admin = () => {
                     <>
                         <div className="grid place-content-center">
                             <h1 className="flex text-bold text-black mt-4 mb-4">Welcome to Foragr {username}!</h1>
+                            <div className="grid place-content-center">
+                                <div className="flex">You have a&nbsp;{userRole}'s account</div>
+                            </div>
+                            <br />
                             <Link to="/dash/userprofile" className="flex flex-col justify-center items-center h-8 bg-cugreen text-white">View Your Profile</Link>
                             <DashBoard />
                         </div>
@@ -118,6 +138,10 @@ const Admin = () => {
                     <h1 className="flex w-48 md:w-32 lg:w-48 text-bold text-black">Welcome to Foragr {username}!
                     </h1>
                 </div>
+                <div className="grid place-content-center">
+                    <div className="flex">You have a&nbsp;{userRole}'s account</div>
+                </div>
+                <br />
                 <div className="grid grid-cols-3 mt-16 text-white font-black antialiased">
                     {(isManager || isAdmin) && <div className="border rounded bg-cugreen text-center"><Link to="/dash/users">Edit Users</Link></div>}
                     {(isManager || isAdmin) && <div className="border rounded bg-cugreen text-center"><Link to="/dash/pros">Edit Professional Users</Link></div>}
