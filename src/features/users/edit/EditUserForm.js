@@ -7,8 +7,8 @@ import useAuth from "../../../hooks/useAuth"
 import { useSendLogoutMutation } from "../../../app/api/authApiSlice"
 import axios from 'axios'
 
-const USER_REGEX = /^[A-z]{3,20}$/
-const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
+const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@£$%^&*()_+=]).{8,24}$/
 
 const EditUserForm = ({ user }) => {
 
