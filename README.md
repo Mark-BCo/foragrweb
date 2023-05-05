@@ -14,23 +14,30 @@ Ready to try your hand at some crafting or try out a new recipie? Or maybe you'd
 
 ## Installation
 
+```bash
 npm install
+```
 
 ## Usage
 
+```bash
 npm run build
+```
 
 ## Local Usage
 
-*server* - npm run dev
-
 ```bash
-*client* - npm start
+server - npm run dev
+```
+```bash
+client - npm start
 ```
 
 ## Serve
 
+```bash
 npm install serve
+```
 
 ```bash
 serve -s build
@@ -38,4 +45,6 @@ serve -s build
 
 ## Test
 
+```bash
 npm test
+```
