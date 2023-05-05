@@ -23,12 +23,18 @@ npm run build
 ## Local Usage
 
 *server* - npm run dev
+
+```bash
 *client* - npm start
+```
 
 ## Serve
 
 npm install serve
+
+```bash
 serve -s build
+```
 
 ## Test
 
