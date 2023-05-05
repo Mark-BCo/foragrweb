@@ -20,7 +20,16 @@ npm install
 
 npm run build
 
+## Local Usage
+
+*server* - npm run dev
+*client* - npm start
+
 ## Serve
 
 npm install serve
 serve -s build
+
+## Test
+
+npm test
